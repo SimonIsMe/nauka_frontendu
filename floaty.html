@@ -1,39 +1,285 @@
-<style type="text/css">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			.kontener {
+				width:800px;
+				height:100px;
+				border:1px solid black;
+			}
+			.f-left {
+				float:left;
+				width:150px;
+				height:100px;
+			}
+			.f-right {
+				float:right;
+				width:150px;
+				height:100px;
+			}
+
+			pre {
+				border:1px solid gray;
+				border-radius: 3px;;
+			}
+			h5 {
+				font-size:20px;
+			}
+		</style>
+	</head>
+	<body>
+		Wszędzie mamy takie same style:
+		<pre>
 .kontener {
 	width:800px;
 	height:100px;
 	border:1px solid black;
 }
 .f-left {
-	float:left;
+	<b>float:left;</b>
 	width:150px;
 	height:100px;
 }
 .f-right {
-	float:right;
+	<b>float:right;</b>
 	width:150px;
 	height:100px;
 }
+		</pre>
+			<p>
+				Jak widać wyróżniamy 3 klasy: kontenera, elementu płynącego w lewo (<i>float:left</i>) i w prawo (<i>float:right</i>).
+			</p>
 
-</style>
-<div class="kontener">
-	<div class="f-left" style="background-color:yellow">1</div>
-	<div class="f-left" style="background-color:orange">2</div>
-	<div class="f-left" style="background-color:pink">3</div>
-</div>
+			<h5>Przykład 1.</h5>
+			Kod wygląda tak:
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow">1&lt;/div>
+	&lt;div class="f-left" style="background-color:orange">2&lt;/div>
+	&lt;div class="f-left" style="background-color:pink">3&lt;/div>
+&lt;/div>
+		</pre>
+			Mamy kontener, a w nim 3 divy płynące w lewo.
+			Przeglądarka wyświetla kolejne divy i przesuwa je maksymalnie w lewą stronę:
+			<div class="kontener">
+				<div class="f-left" style="background-color:yellow">1</div>
+				<div class="f-left" style="background-color:orange">2</div>
+				<div class="f-left" style="background-color:pink">3</div>
+			</div>
 
-<div class="kontener">
-	<div class="f-right" style="background-color:yellow">1</div>
-	<div class="f-right" style="background-color:orange">2</div>
-	<div class="f-right" style="background-color:pink">3</div>
-</div>
+			<h5>Przykład 2.</h5>
+			<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-right" style="background-color:yellow">1&lt;/div>
+	&lt;div class="f-right" style="background-color:orange">2&lt;/div>
+	&lt;div class="f-right" style="background-color:pink">3&lt;/div>
+&lt;/div>
+			</pre>
+			Gdy ustawimy pływanie w prawo wyświetla się one z przyleganiem w prawo, ale w odwrotnej kolejności.<br />
+			Dlaczego? Bo najpierw będzie wyświetlany kwadrat 1 i będzie on przyciągany w prawą stronę. <br />
+			Później kwadrat 2 i będzie on przyciągany maxymalnie w prawo, trzeci kwadrat podobnie.
+			Dlatego efekt jest taki:
+			<div class="kontener">
+				<div class="f-right" style="background-color:yellow">1</div>
+				<div class="f-right" style="background-color:orange">2</div>
+				<div class="f-right" style="background-color:pink">3</div>
+			</div>
 
-<div class="kontener">
-	<div class="f-left" style="background-color:yellow">w lewo</div>
-	<div class="f-right" style="background-color:orange">w prawo</div>
-</div>
+			<h5>Przykład 3.</h5>
+			Gdy użyjemy pzyciagania w lewo i w prawo, odpowiednie div'y znajdą swoją pozycję.
+			<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow">w lewo&lt;/div>
+	&lt;div class="f-right" style="background-color:orange">w prawo&lt;/div>
+&lt;/div>
+			</pre>
+			<div class="kontener">
+				<div class="f-left" style="background-color:yellow">w lewo</div>
+				<div class="f-right" style="background-color:orange">w prawo</div>
+			</div>
 
-<div class="kontener">	
-	<div class="f-right" style="background-color:orange">w prawo</div>
-	<div class="f-left" style="background-color:yellow">w lewo</div>
-</div>
+			<h5>Przykład 4.</h5>
+			Co ciekawe w tym przyadpku kolejność div'ów w kodzie HTML nie ma znaczenia.
+			<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-right" style="background-color:orange">w prawo&lt;/div>
+	&lt;div class="f-left" style="background-color:yellow">w lewo&lt;/div>
+&lt;/div>
+			</pre>
+			<div class="kontener">
+				<div class="f-right" style="background-color:orange">w prawo</div>
+				<div class="f-left" style="background-color:yellow">w lewo</div>
+			</div>
+
+			<h5>Przykład 5.</h5>
+
+			Elementy są ustawiane maksymalnie w lewo i w prawo w kontenerze. Poza tym są umieszczane maksymalnie w górę.<br />
+			Ma to znaczenie, gdy są za długie:<br />
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:30px; width:500px;">w lewo o szerokości 500px&lt;/div>
+	&lt;div class="f-right" style="background-color:orange; height:30px; width:400px;">w prawo o szerokości 400px&lt;/div>
+&lt;/div>
+		</pre>
+			<div class="kontener">
+				<div class="f-left" style="background-color:yellow; height:30px; width:500px;">w lewo o szerokości 500px</div>
+				<div class="f-right" style="background-color:orange; height:30px; width:400px;">w prawo o szerokości 400px</div>
+			</div>
+
+			<h5>Przykład 6.</h5>
+			Gdy umieścimy za dużo elementów zostaną one wyświetlone poniżej:
+			<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:40px;">1&lt;/div>
+	&lt;div class="f-left" style="background-color:orange; height:40px;">2&lt;/div>
+	&lt;div class="f-left" style="background-color:pink; height:40px;">3&lt;/div>
+	&lt;div class="f-left" style="background-color:greenyellow; height:40px;">4&lt;/div>
+	&lt;div class="f-left" style="background-color:burlywood; height:40px;">5&lt;/div>
+	&lt;div class="f-left" style="background-color:aquamarine; height:40px;">6&lt;/div>
+&lt;/div>
+			</pre>
+			<div class="kontener">
+				<div class="f-left" style="background-color:yellow; height:40px;">1</div>
+				<div class="f-left" style="background-color:orange; height:40px;">2</div>
+				<div class="f-left" style="background-color:pink; height:40px;">3</div>
+				<div class="f-left" style="background-color:greenyellow; height:40px;">4</div>
+				<div class="f-left" style="background-color:burlywood; height:40px;">5</div>
+				<div class="f-left" style="background-color:aquamarine; height:40px;">6</div>
+			</div>
+
+		<h5>Przykład 7.</h5>
+		Przez to div'y pływające mogą zachowywać się czasami "nieoczekiwanie":
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:40px;">1&lt;/div>
+	&lt;div class="f-left" style="background-color:orange; height:80px;">2&lt;/div>
+	&lt;div class="f-left" style="background-color:pink; height:70px;">3&lt;/div>
+	&lt;div class="f-left" style="background-color:greenyellow; height:40px;">4&lt;/div>
+	&lt;div class="f-left" style="background-color:burlywood; height:40px;">5&lt;/div>
+	&lt;div class="f-left" style="background-color:aquamarine; height:40px;">6&lt;/div>
+&lt;/div>
+		</pre>
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; height:40px;">1</div>
+			<div class="f-left" style="background-color:orange; height:80px;">2</div>
+			<div class="f-left" style="background-color:pink; height:70px;">3</div>
+			<div class="f-left" style="background-color:greenyellow; height:40px;">4</div>
+			<div class="f-left" style="background-color:burlywood; height:40px;">5</div>
+			<div class="f-left" style="background-color:aquamarine; height:40px;">6</div>
+		</div>
+
+
+		<h5>Przykład 8.</h5>
+		Pewnego rodzaju "odwrotnością" float'ów jest <i>clear</i>, który zapewnia, że z lewej, prawej lub obu stron nie będą przylegały elementy typi <i>float</i>.
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:40px;">1&lt;/div>
+	&lt;div style="<b>clear:left;</b> background-color:orange; height:40px;">2&lt;/div>
+&lt;/div>
+		</pre>
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; height:40px;">1</div>
+			<div style="clear:left; background-color:orange; height:40px;">2</div>
+		</div>
+
+		<h5>Przykład 9.</h5>
+		Teraz przykład z nie-przyleganiem tylko z prawej strony.
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:40px;">1&lt;/div>
+	&lt;div style="<b>clear:right;</b> background-color:orange; height:40px;">2&lt;/div>
+	&lt;div class="f-right" style="background-color:greenyellow; height:40px;">3&lt;/div>
+&lt;/div>
+		</pre>
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; height:40px;">1</div>
+			<div style="clear:right; background-color:orange; height:40px;">2</div>
+			<div class="f-right" style="background-color:greenyellow; height:40px;">3</div>
+		</div>
+		Dlaczego otrzymaliśmy taki efekt?<br />
+		Najpierw wyświetlany jest div 1 i leci on w lewo i do góry.<br />
+		Później wyświetlamy div'a 2 i jest on wyświetlany "normalnie", bez floatów (tak jak w przykładzie 8.).<br />
+		Na końcu wyświetlamy div'a 3 i leci on maksymalnie w prawo i do góry.
+
+		<h5>Przykład 10.</h5>
+		Gdy ustawimy <i>clear:both</i> dostaniemy taki efekt:
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; height:30px;">1&lt;/div>
+	&lt;div style="<b>clear:both;</b> background-color:orange; height:30px;">2&lt;/div>
+	&lt;div class="f-right" style="background-color:greenyellow; height:30px;">3&lt;/div>
+&lt;/div>
+		</pre>
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; height:30px;">1</div>
+			<div style="clear:left; background-color:orange; height:30px;">2</div>
+			<div class="f-right" style="background-color:greenyellow; height:30px;">3</div>
+		</div>
+		1) Przegladarka wyświetla div'a 1. i leci on na maksa w górę i w lewo.<br />
+		2) Przeglądarka wyświetla div'a 2. Ma on ustawione <i>clear:both</i> (= jednoczesne <i>clear:left</i> i <i>clear:right</i>).
+			Dlatego div ten nie może przylegać do div'a 1. Będzie wyświetlony na całą długość kontenera (jak zwykły div).
+		3) Przeglądarka wyświetla div'a 3. Leci on maksymalnie w prawo i do góry.
+
+		<h5>Przykład 11.</h5>
+		Float'y mogą być (i są!) używane do budowania kolumn na stronach www.
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; width:150px;">Kolumna lewa&lt;/div>
+	&lt;div class="f-left" style="background-color:greenyellow; width:550px;">Środek strony&lt;/div>
+	&lt;div class="f-left" style="background-color:pink; width:100px;">Kolumna prawa&lt;/div>
+&lt;/div>
+		</pre>
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; width:150px;">Kolumna lewa</div>
+			<div class="f-left" style="background-color:greenyellow; width:550px;">Środek strony</div>
+			<div class="f-left" style="background-color:pink; width:100px;">Kolumna prawa</div>
+		</div>
+		Zauważ, że taki sam efekt uzyskalibyśmy z <i>float:right</i> i dowrotną kolejnością div'ów w kodzie HTML.
+
+		<h5>Przykład 12.</h5>
+		Kiedy chcemy zbudować złożone układy stron musimy używać pustych div'ów z <i>clear:both</i>, aby "zresetować" sekcję z kolumnami, bo inaczej strona nam się rozwali.
+		<pre>
+&lt;div class="kontener"&gt;
+	&lt;div class="f-left" style="background-color:yellow; width:150px; height:50px;">Kolumna lewa&lt;/div>
+	&lt;div class="f-left" style="background-color:greenyellow; width:550px; height:50px;">Środek strony&lt;/div>
+	&lt;div class="f-left" style="background-color:pink; width:100px; height:50px;">Kolumna prawa&lt;/div>
+
+	<b>&lt;div style="clear:both; background-color:red">div "czyszczący"&lt;/div></b>
+
+	&lt;div class="f-left" style="background-color:orange; width:350px; height:50px;">#2 Kolumna lewa&lt;/div>
+	&lt;div class="f-left" style="background-color:aqua; width:450px; height:50px;">#2 Kolumna prawa&lt;/div>
+
+	<b>&lt;div style="clear:both; background-color:red">div "czyszczący"&lt;/div></b>
+&lt;/div>
+		</pre>
+
+		<div class="kontener">
+			<div class="f-left" style="background-color:yellow; width:150px; height:25px;">#1 Kolumna lewa</div>
+			<div class="f-left" style="background-color:greenyellow; width:550px; height:25px;">#1 Środek strony</div>
+			<div class="f-left" style="background-color:pink; width:100px; height:25px;">#1 Kolumna prawa</div>
+
+			<div style="clear:both; background-color:red">div "czyszczący"</div>
+
+			<div class="f-left" style="background-color:orange; width:350px; height:25px;">#2 Kolumna lewa</div>
+			<div class="f-left" style="background-color:aqua; width:450px; height:25px;">#2 Kolumna prawa</div>
+
+			<div style="clear:both; background-color:red">div "czyszczący"</div>
+		</div>
+
+		Między kolumnami #1 i #2 zamieściliśmy div'a czyszczącego, który odziela nam pływające kolumny.
+		Użycie drugiego div'a czyszczącego jest praktycznie zbędne, ale powinno się go dodawać, bo taka jest dobra praktyka.
+		Gdybyś miała stronę, gdzie zapomniałabyś dodać div'a czyszzącego i dopisałabyś nowy fragment, nagle mogłoby się wszysko rozsypać.
+		A znalezienie przyczyny byłoby trudne. Dlatego jest zasada, że gdy kończysz kolumny rób div'a z <i>clear:both</i>.
+
+		<h5>Praca domowa</h5>
+		Zrobić kopię strony facebook.com dla niezalogowanego użytkownika.<br />
+		<img src="fb.jpg" width="500" /><br />
+		<b>Krok 1.</b> - Zrób szablon z pustych div'ów. Najważniejsze jest to, aby wyświetlały się w odpowiednich miejscach.<br />
+		<b>Krok 2.</b> - Każdy z div'ów możesz potraktować jako osobną "podstronę" i skupić się na danym elemencie.<br />
+			Najpierw propnuję zająć się obszarami "cookies", "logo", "tekst", "języki" oraz "odsyłacze". Do "logowania" i "rejestracji"
+			zrobię kolejny odcinek kursu.<br />
+		<a href="facebook.zip">Tutaj jest</a> archiwum z grafikami i kilkoma pomocnymi rzeczami.<br />
+		<b>Dasz radę, powodzenia!! :)</b>
+	</body>
+</html>
+
